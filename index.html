@@ -1,177 +1,197 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ditzz Network Hosting</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🚀 Ditzz Network Hosting</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Orbitron:wght@600;700&display=swap');
+    * {margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
     body {
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #0c1117, #0a0f14, #05080b);
-      color: white;
-      overflow-x: hidden;
+      font-family:'Poppins',sans-serif;
+      background:#05080b;
+      color:white;
+      overflow-x:hidden;
     }
+
+    /* Loading screen */
+    #loading {
+      position:fixed;
+      top:0;left:0;width:100%;height:100%;
+      background:#05080b;
+      display:flex;align-items:center;justify-content:center;
+      z-index:9999;flex-direction:column;
+    }
+    .loader {
+      border:5px solid rgba(255,255,255,0.1);
+      border-top:5px solid #00ffc6;
+      border-radius:50%;
+      width:70px;height:70px;
+      animation:spin 1s linear infinite;
+      margin-bottom:15px;
+    }
+    @keyframes spin {to{transform:rotate(360deg)}}
+
+    /* Navbar */
+    nav {
+      position:fixed;
+      top:0;left:0;width:100%;
+      background:rgba(0,0,0,0.6);
+      backdrop-filter:blur(10px);
+      display:flex;justify-content:space-between;align-items:center;
+      padding:15px 40px;
+      z-index:1000;
+      border-bottom:1px solid rgba(0,255,198,0.3);
+    }
+    nav .logo {
+      font-family:'Orbitron',sans-serif;
+      color:#00ffc6;
+      font-size:1.3rem;
+      text-shadow:0 0 10px #00ffc6;
+    }
+    nav ul {
+      display:flex;
+      gap:20px;
+      list-style:none;
+    }
+    nav ul li a {
+      text-decoration:none;
+      color:white;
+      font-weight:600;
+      transition:.3s;
+    }
+    nav ul li a:hover {
+      color:#00ffc6;
+      text-shadow:0 0 10px #00ffc6;
+    }
+
+    /* Hero Section */
     header {
-      text-align: center;
-      padding: 60px 20px 30px;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      border-bottom: 3px solid #00ffc6;
-      box-shadow: 0 0 25px rgba(0, 255, 198, 0.3);
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      background:transparent;
+      position:relative;
     }
     header h1 {
-      font-size: 2.3rem;
-      color: #00ffc6;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-      animation: glowText 2s infinite alternate;
+      font-family:'Orbitron',sans-serif;
+      font-size:2.5rem;
+      color:#00ffc6;
+      text-shadow:0 0 25px #00ffc6;
+      animation:glowText 2s infinite alternate;
     }
     @keyframes glowText {
-      from { text-shadow: 0 0 10px #00ffc6; }
-      to { text-shadow: 0 0 25px #00bfa5; }
+      from{text-shadow:0 0 10px #00ffc6;}
+      to{text-shadow:0 0 30px #00bfa5;}
     }
-    pre {
-      color: #00ffc6;
-      font-weight: bold;
-      font-size: 0.9rem;
-      text-shadow: 0 0 10px #00ffc6;
+    header p {
+      color:#ccc;
+      margin-top:10px;
     }
+
+    /* Container utama */
     .container {
-      max-width: 1100px;
-      margin: 60px auto;
-      padding: 20px;
+      max-width:1100px;
+      margin:100px auto;
+      padding:20px;
     }
+
     .plans {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:25px;
     }
     .plan {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(0, 255, 198, 0.3);
-      border-radius: 15px;
-      padding: 25px;
-      text-align: center;
-      backdrop-filter: blur(10px);
-      transition: all 0.4s ease;
-      box-shadow: 0 0 15px rgba(0,255,198,0.1);
-      opacity: 0;
-      transform: translateY(50px);
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(0,255,198,0.3);
+      border-radius:15px;
+      padding:25px;
+      text-align:center;
+      backdrop-filter:blur(10px);
+      transition:all .4s ease;
+      opacity:0;transform:translateY(50px);
     }
-    .plan.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .plan:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 0 25px rgba(0,255,198,0.5);
-    }
-    .plan h2 {
-      color: #00ffc6;
-      margin-bottom: 15px;
-    }
-    .plan ul {
-      list-style: none;
-      text-align: left;
-      margin-bottom: 25px;
-    }
-    .plan ul li {
-      margin: 6px 0;
-      padding-left: 10px;
-      border-left: 2px solid #00ffc6;
-    }
+    .plan.visible {opacity:1;transform:translateY(0);}
+    .plan:hover {transform:translateY(-10px) scale(1.03);box-shadow:0 0 25px rgba(0,255,198,0.4);}
+    .plan h2 {color:#00ffc6;margin-bottom:15px;}
+    .plan ul {list-style:none;text-align:left;margin-bottom:20px;}
+    .plan li {margin:6px 0;padding-left:10px;border-left:2px solid #00ffc6;}
     .btn {
-      display: inline-block;
-      background: #00ffc6;
-      color: #000;
-      font-weight: 700;
-      padding: 10px 22px;
-      border-radius: 30px;
-      text-decoration: none;
-      transition: 0.3s;
-      box-shadow: 0 0 15px #00ffc6;
+      background:#00ffc6;color:#000;font-weight:700;
+      padding:10px 22px;border-radius:30px;text-decoration:none;
+      transition:0.3s;box-shadow:0 0 15px #00ffc6;
     }
-    .btn:hover {
-      background: #00bfa5;
-      color: white;
-      box-shadow: 0 0 25px #00ffc6;
-    }
-    section {
-      margin-top: 70px;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.6s ease;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    section h3 {
-      color: #00ffc6;
-      margin-bottom: 15px;
-      font-size: 1.6rem;
-      text-shadow: 0 0 10px #00ffc6;
-    }
-    section ul {
-      list-style: none;
-      display: inline-block;
-      text-align: left;
-      line-height: 1.8;
-    }
-    .contact {
-      text-align: center;
-      margin-top: 70px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.6s ease;
-    }
-    .contact.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .contact a {
-      color: #00ffc6;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 1.1rem;
-      transition: 0.3s;
-    }
-    .contact a:hover {
-      color: #00bfa5;
-      text-shadow: 0 0 10px #00ffc6;
-    }
+    .btn:hover {background:#00bfa5;color:white;box-shadow:0 0 25px #00ffc6;}
+
+    section {text-align:center;margin-top:80px;opacity:0;transform:translateY(40px);transition:all 0.6s ease;}
+    section.visible {opacity:1;transform:translateY(0);}
+    section h3 {color:#00ffc6;margin-bottom:15px;font-size:1.6rem;text-shadow:0 0 10px #00ffc6;}
+    section ul {list-style:none;display:inline-block;text-align:left;line-height:1.8;}
+
     footer {
-      text-align: center;
-      padding: 20px;
-      margin-top: 80px;
-      font-size: 0.9rem;
-      background: rgba(0, 0, 0, 0.4);
-      border-top: 2px solid #00ffc6;
+      text-align:center;padding:20px;margin-top:80px;
+      font-size:0.9rem;background:rgba(0,0,0,0.5);
+      border-top:2px solid #00ffc6;
+    }
+
+    /* Floating Chat */
+    .whatsapp-float {
+      position:fixed;bottom:25px;right:25px;
+      background:#00ffc6;color:#000;
+      border-radius:50%;width:60px;height:60px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:28px;text-decoration:none;
+      box-shadow:0 0 20px #00ffc6;
+      transition:.3s;z-index:999;
+    }
+    .whatsapp-float:hover {
+      transform:scale(1.1);
+      background:#00bfa5;
+      color:white;
+      box-shadow:0 0 30px #00ffc6;
+    }
+
+    /* Background partikel canvas */
+    #particles-js {
+      position:fixed;
+      top:0;left:0;width:100%;height:100%;
+      z-index:-1;
+      background:#05080b;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>HOSTING DITZZ NETWORK</h1>
-    <pre>
-╭━━━┳━━━┳━╮╭━┳━━━╮
-┃╭━╮┃╭━╮┃┃╰╯┃┃╭━╮┃
-┃╰━━┫┃╱┃┃╭╮╭╮┃╰━╯┃
-╰━━╮┃╰━╯┃┃┃┃┃┃╭━━╯
-┃╰━╯┃╭━╮┃┃┃┃┃┃┃    
-╰━━━┻╯╱╰┻╯╰╯╰┻╯    
-    </pre>
+  <!-- Loading -->
+  <div id="loading">
+    <div class="loader"></div>
+    <p style="color:#00ffc6;font-weight:600;">Loading Ditzz Network...</p>
+  </div>
+
+  <!-- Background Partikel -->
+  <div id="particles-js"></div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">🚀 Ditzz Network</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#paket">Paket</a></li>
+      <li><a href="#benefit">Benefit</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header id="home">
+    <h1>Hosting SA:MP Premium</h1>
+    <p>Dari Ditzz Network — Cepat, Murah, Stabil, dan Powerfull 💪</p>
   </header>
 
-  <div class="container">
+  <div class="container" id="paket">
     <div class="plans">
 
       <div class="plan">
@@ -218,52 +238,66 @@
         <a href="https://wa.me/6285191923519?text=Halo%20kak%20saya%20mau%20pesan%20paket%2020K%20Hosting%20SAMP" class="btn" target="_blank">Pesan Sekarang</a>
       </div>
 
-      <div class="plan">
-        <h2>⚙️ BENEFITES</h2>
-        <ul>
-          <li>DATABASH [ON]</li>
-          <li>PHPMYADMIN [ON]</li>
-          <li>REGION SGP1</li>
-          <li>PING [20-30]</li>
-        </ul>
-      </div>
-
     </div>
 
-    <div class="contact" id="kontak">
+    <section id="benefit">
+      <h3>⚙️ BENEFIT</h3>
+      <ul>
+        <li>DATABASE [ON]</li>
+        <li>PMA [ON]</li>
+        <li>PORT VOICE [ON]</li>
+        <li>PING STABIL [20-45]</li>
+      </ul>
+    </section>
+
+    <section id="jasa">
+      <h3>🛠️ MENERIMA JASA</h3>
+      <ul>
+        <li>INSTALL PANEL PTERODACTYL</li>
+        <li>INSTALL DATABASE DAN PMA</li>
+        <li>INSTALL SERVER SAMP</li>
+        <li>DAN LAIN-LAIN</li>
+      </ul>
+    </section>
+
+    <section id="kontak">
       <h3>📞 NOMOR ADMIN</h3>
-      <p><a href="https://wa.me/6285191923519" target="_blank">+62 851-9192-3519 [DITZZ]</a></p>
-    </div>
+      <p><a href="https://wa.me/6285191923519" style="color:#00ffc6;font-weight:600;text-decoration:none;">+62 851-9192-3519 [DITZZ]</a></p>
+    </section>
   </div>
 
   <footer>
     © 2025 Ditzz Network Hosting — All Rights Reserved
   </footer>
 
-  <script>
-    // Animasi muncul saat scroll
-    const elements = document.querySelectorAll('.plan, section, .contact');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-    elements.forEach(el => observer.observe(el));
+  <!-- Tombol Chat WhatsApp -->
+  <a href="https://wa.me/6285191923519" class="whatsapp-float" target="_blank">💬</a>
 
-    // Efek kilau neon di tombol
-    const buttons = document.querySelectorAll('.btn');
-    buttons.forEach(btn => {
-      btn.addEventListener('mousemove', e => {
-        const rect = btn.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        btn.style.boxShadow = `0 0 25px #00ffc6, inset 0 0 20px rgba(0,255,198,0.5)`;
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    // Loading screen
+    window.addEventListener('load',()=>{
+      document.getElementById('loading').style.display='none';
+    });
+
+    // Animasi scroll muncul
+    const elements=document.querySelectorAll('.plan,section');
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){entry.target.classList.add('visible');}
       });
-      btn.addEventListener('mouseleave', () => {
-        btn.style.boxShadow = '0 0 15px #00ffc6';
-      });
+    },{threshold:0.2});
+    elements.forEach(el=>observer.observe(el));
+
+    // Particles background
+    particlesJS("particles-js",{
+      "particles":{"number":{"value":70},"color":{"value":"#00ffc6"},
+      "shape":{"type":"circle"},"opacity":{"value":0.5},
+      "size":{"value":3},"line_linked":{"enable":true,"distance":150,"color":"#00ffc6","opacity":0.4,"width":1},
+      "move":{"enable":true,"speed":2,"direction":"none","random":false,"straight":false,"out_mode":"out"}}, 
+      "interactivity":{"events":{"onhover":{"enable":true,"mode":"grab"}}},
+      "retina_detect":true
     });
   </script>
 </body>
