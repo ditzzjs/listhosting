@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🚀 Ditzz Network Hosting</title>
+  <title>Ditzz Network Hosting</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
     * {
@@ -14,8 +14,9 @@
     }
     body {
       font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #101820, #0a0f14);
+      background: radial-gradient(circle at top, #0c1117, #0a0f14, #05080b);
       color: white;
+      overflow-x: hidden;
     }
     header {
       text-align: center;
@@ -25,10 +26,15 @@
       box-shadow: 0 0 25px rgba(0, 255, 198, 0.3);
     }
     header h1 {
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       color: #00ffc6;
       margin-bottom: 10px;
       letter-spacing: 1px;
+      animation: glowText 2s infinite alternate;
+    }
+    @keyframes glowText {
+      from { text-shadow: 0 0 10px #00ffc6; }
+      to { text-shadow: 0 0 25px #00bfa5; }
     }
     pre {
       color: #00ffc6;
@@ -37,13 +43,13 @@
       text-shadow: 0 0 10px #00ffc6;
     }
     .container {
-      max-width: 1000px;
-      margin: 50px auto;
+      max-width: 1100px;
+      margin: 60px auto;
       padding: 20px;
     }
     .plans {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 25px;
     }
     .plan {
@@ -52,13 +58,19 @@
       border-radius: 15px;
       padding: 25px;
       text-align: center;
-      transition: 0.3s;
       backdrop-filter: blur(10px);
+      transition: all 0.4s ease;
       box-shadow: 0 0 15px rgba(0,255,198,0.1);
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    .plan.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     .plan:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 25px rgba(0,255,198,0.3);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 0 25px rgba(0,255,198,0.5);
     }
     .plan h2 {
       color: #00ffc6;
@@ -67,33 +79,45 @@
     .plan ul {
       list-style: none;
       text-align: left;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
     .plan ul li {
       margin: 6px 0;
+      padding-left: 10px;
+      border-left: 2px solid #00ffc6;
     }
     .btn {
       display: inline-block;
       background: #00ffc6;
       color: #000;
-      font-weight: 600;
-      padding: 10px 20px;
+      font-weight: 700;
+      padding: 10px 22px;
       border-radius: 30px;
       text-decoration: none;
       transition: 0.3s;
+      box-shadow: 0 0 15px #00ffc6;
     }
     .btn:hover {
       background: #00bfa5;
-      color: #fff;
+      color: white;
+      box-shadow: 0 0 25px #00ffc6;
     }
     section {
-      margin-top: 60px;
+      margin-top: 70px;
       text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     section h3 {
       color: #00ffc6;
       margin-bottom: 15px;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
+      text-shadow: 0 0 10px #00ffc6;
     }
     section ul {
       list-style: none;
@@ -103,36 +127,40 @@
     }
     .contact {
       text-align: center;
-      margin-top: 60px;
+      margin-top: 70px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
+    .contact.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     .contact a {
       color: #00ffc6;
       font-weight: 600;
       text-decoration: none;
       font-size: 1.1rem;
+      transition: 0.3s;
+    }
+    .contact a:hover {
+      color: #00bfa5;
+      text-shadow: 0 0 10px #00ffc6;
     }
     footer {
       text-align: center;
-      padding: 15px;
+      padding: 20px;
       margin-top: 80px;
       font-size: 0.9rem;
       background: rgba(0, 0, 0, 0.4);
       border-top: 2px solid #00ffc6;
-    }
-    /* animasi masuk */
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    .plan, section, header {
-      animation: fadeIn 0.8s ease forwards;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>🚀 HOSTING DITZZ NETWORK 🚀</h1>
+    <h1>HOSTING DITZZ NETWORK</h1>
     <pre>
 ╭━━━┳━━━┳━╮╭━┳━━━╮
 ┃╭━╮┃╭━╮┃┃╰╯┃┃╭━╮┃
@@ -192,7 +220,7 @@
 
     </div>
 
-    <section>
+    <section id="benefit">
       <h3>⚙️ BENEFIT</h3>
       <ul>
         <li>DATABASE [ON]</li>
@@ -202,17 +230,16 @@
       </ul>
     </section>
 
-    <section>
-      <h3>🛠️ MENERIMA JASA</h3>
+    <section id="jasa">
+      <h3>🛠️ JASA PTERODACTYL</h3>
       <ul>
-        <li>INSTALL PANEL PTERODACTYL</li>
-        <li>INSTALL DATABASE DAN PMA</li>
-        <li>INSTALL SERVER SAMP</li>
+        <li>INSTALL PANEL</li>
+        <li>PHPMYADMIN DAN DATABASH</li>
         <li>DAN LAIN-LAIN</li>
       </ul>
     </section>
 
-    <div class="contact">
+    <div class="contact" id="kontak">
       <h3>📞 NOMOR ADMIN</h3>
       <p><a href="https://wa.me/6285191923519" target="_blank">+62 851-9192-3519 [DITZZ]</a></p>
     </div>
@@ -222,5 +249,31 @@
     © 2025 Ditzz Network Hosting — All Rights Reserved
   </footer>
 
+  <script>
+    // Animasi muncul saat scroll
+    const elements = document.querySelectorAll('.plan, section, .contact');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+    elements.forEach(el => observer.observe(el));
+
+    // Efek kilau neon di tombol
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        btn.style.boxShadow = `0 0 25px #00ffc6, inset 0 0 20px rgba(0,255,198,0.5)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.boxShadow = '0 0 15px #00ffc6';
+      });
+    });
+  </script>
 </body>
 </html>
