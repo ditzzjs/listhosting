@@ -1,88 +1,131 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🚀 Hosting Ditzz Network 🚀</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚀 Ditzz Network Hosting</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: white;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #101820, #0a0f14);
+      color: white;
     }
     header {
       text-align: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.4);
-      border-bottom: 2px solid #00ffcc;
+      padding: 60px 20px 30px;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      border-bottom: 3px solid #00ffc6;
+      box-shadow: 0 0 25px rgba(0, 255, 198, 0.3);
+    }
+    header h1 {
+      font-size: 2.2rem;
+      color: #00ffc6;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
     }
     pre {
-      color: #00ffcc;
+      color: #00ffc6;
       font-weight: bold;
-      font-family: monospace;
-    }
-    h1 {
-      color: #00ffcc;
-      font-size: 1.8rem;
-      margin-bottom: 10px;
+      font-size: 0.9rem;
+      text-shadow: 0 0 10px #00ffc6;
     }
     .container {
-      max-width: 900px;
-      margin: 30px auto;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
+      max-width: 1000px;
+      margin: 50px auto;
       padding: 20px;
-      box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+    }
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
     }
     .plan {
-      background: rgba(0, 0, 0, 0.3);
-      margin-bottom: 20px;
-      padding: 15px;
-      border-radius: 10px;
-      border-left: 4px solid #00ffcc;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 255, 198, 0.3);
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      transition: 0.3s;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 15px rgba(0,255,198,0.1);
+    }
+    .plan:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0,255,198,0.3);
     }
     .plan h2 {
-      color: #00ffcc;
-      margin-bottom: 10px;
+      color: #00ffc6;
+      margin-bottom: 15px;
     }
     .plan ul {
       list-style: none;
-      padding: 0;
-      margin: 0;
+      text-align: left;
+      margin-bottom: 20px;
     }
-    .plan li::before {
-      content: "🚀 ";
-      color: #00ffcc;
+    .plan ul li {
+      margin: 6px 0;
     }
-    .section {
-      margin-top: 30px;
+    .btn {
+      display: inline-block;
+      background: #00ffc6;
+      color: #000;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: 0.3s;
     }
-    .section h3 {
-      color: #00ffcc;
-      margin-bottom: 10px;
+    .btn:hover {
+      background: #00bfa5;
+      color: #fff;
+    }
+    section {
+      margin-top: 60px;
+      text-align: center;
+    }
+    section h3 {
+      color: #00ffc6;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    section ul {
+      list-style: none;
+      display: inline-block;
+      text-align: left;
+      line-height: 1.8;
     }
     .contact {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 15px;
-      border-radius: 10px;
       text-align: center;
-      margin-top: 30px;
+      margin-top: 60px;
     }
     .contact a {
-      color: #00ffcc;
+      color: #00ffc6;
+      font-weight: 600;
       text-decoration: none;
-      font-weight: bold;
+      font-size: 1.1rem;
     }
     footer {
       text-align: center;
-      padding: 10px;
-      background: rgba(0, 0, 0, 0.4);
-      border-top: 2px solid #00ffcc;
-      margin-top: 20px;
+      padding: 15px;
+      margin-top: 80px;
       font-size: 0.9rem;
+      background: rgba(0, 0, 0, 0.4);
+      border-top: 2px solid #00ffc6;
+    }
+    /* animasi masuk */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    .plan, section, header {
+      animation: fadeIn 0.8s ease forwards;
     }
   </style>
 </head>
@@ -101,47 +144,55 @@
   </header>
 
   <div class="container">
-    <div class="plan">
-      <h2>💰 HARGA: 5K</h2>
-      <ul>
-        <li>50 SLOT PLAYER</li>
-        <li>CPU 100</li>
-        <li>RAM/DISK 10GB</li>
-        <li>WINDOWS / LINUX</li>
-      </ul>
+    <div class="plans">
+
+      <div class="plan">
+        <h2>💰 HARGA: 5K</h2>
+        <ul>
+          <li>50 SLOT PLAYER</li>
+          <li>CPU 100</li>
+          <li>RAM/DISK 10GB</li>
+          <li>WINDOWS / LINUX</li>
+        </ul>
+        <a href="https://wa.me/6285191923519?text=Halo%20kak%20saya%20mau%20pesan%20paket%205K%20Hosting%20SAMP" class="btn" target="_blank">Pesan Sekarang</a>
+      </div>
+
+      <div class="plan">
+        <h2>💰 HARGA: 10K</h2>
+        <ul>
+          <li>150 SLOT PLAYER</li>
+          <li>CPU 150</li>
+          <li>RAM/DISK 25GB</li>
+          <li>WINDOWS / LINUX</li>
+        </ul>
+        <a href="https://wa.me/6285191923519?text=Halo%20kak%20saya%20mau%20pesan%20paket%2010K%20Hosting%20SAMP" class="btn" target="_blank">Pesan Sekarang</a>
+      </div>
+
+      <div class="plan">
+        <h2>💰 HARGA: 15K</h2>
+        <ul>
+          <li>200 SLOT PLAYER</li>
+          <li>CPU 200</li>
+          <li>RAM/DISK 25GB</li>
+          <li>WINDOWS / LINUX</li>
+        </ul>
+        <a href="https://wa.me/6285191923519?text=Halo%20kak%20saya%20mau%20pesan%20paket%2015K%20Hosting%20SAMP" class="btn" target="_blank">Pesan Sekarang</a>
+      </div>
+
+      <div class="plan">
+        <h2>💰 HARGA: 20K</h2>
+        <ul>
+          <li>250 SLOT PLAYER</li>
+          <li>CPU 250</li>
+          <li>RAM/DISK 80GB</li>
+          <li>WINDOWS / LINUX</li>
+        </ul>
+        <a href="https://wa.me/6285191923519?text=Halo%20kak%20saya%20mau%20pesan%20paket%2020K%20Hosting%20SAMP" class="btn" target="_blank">Pesan Sekarang</a>
+      </div>
+
     </div>
 
-    <div class="plan">
-      <h2>💰 HARGA: 10K</h2>
-      <ul>
-        <li>150 SLOT PLAYER</li>
-        <li>CPU 150</li>
-        <li>RAM/DISK 25GB</li>
-        <li>WINDOWS / LINUX</li>
-      </ul>
-    </div>
-
-    <div class="plan">
-      <h2>💰 HARGA: 15K</h2>
-      <ul>
-        <li>200 SLOT PLAYER</li>
-        <li>CPU 200</li>
-        <li>RAM/DISK 25GB</li>
-        <li>WINDOWS / LINUX</li>
-      </ul>
-    </div>
-
-    <div class="plan">
-      <h2>💰 HARGA: 20K</h2>
-      <ul>
-        <li>250 SLOT PLAYER</li>
-        <li>CPU 250</li>
-        <li>RAM/DISK 80GB</li>
-        <li>WINDOWS / LINUX</li>
-      </ul>
-    </div>
-
-    <div class="section">
+    <section>
       <h3>⚙️ BENEFIT</h3>
       <ul>
         <li>DATABASE [ON]</li>
@@ -149,9 +200,9 @@
         <li>PORT VOICE [ON]</li>
         <li>PING STABIL [20-45]</li>
       </ul>
-    </div>
+    </section>
 
-    <div class="section">
+    <section>
       <h3>🛠️ MENERIMA JASA</h3>
       <ul>
         <li>INSTALL PANEL PTERODACTYL</li>
@@ -159,7 +210,7 @@
         <li>INSTALL SERVER SAMP</li>
         <li>DAN LAIN-LAIN</li>
       </ul>
-    </div>
+    </section>
 
     <div class="contact">
       <h3>📞 NOMOR ADMIN</h3>
@@ -168,7 +219,7 @@
   </div>
 
   <footer>
-    © 2025 Ditzz Network Hosting | All Rights Reserved
+    © 2025 Ditzz Network Hosting — All Rights Reserved
   </footer>
 
 </body>
