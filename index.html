@@ -6,8 +6,8 @@
   <title>🚀 Ditzz Network Hosting</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Orbitron:wght@600;700&display=swap');
-    * {margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
-    body {
+    *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+    body{
       font-family:'Poppins',sans-serif;
       background:#05080b;
       color:white;
@@ -15,13 +15,13 @@
     }
 
     /* Loading screen */
-    #loading {
+    #loading{
       position:fixed;top:0;left:0;width:100%;height:100%;
       background:#05080b;
       display:flex;align-items:center;justify-content:center;
       z-index:9999;flex-direction:column;
     }
-    .loader {
+    .loader{
       border:5px solid rgba(255,255,255,0.1);
       border-top:5px solid #00ffc6;
       border-radius:50%;
@@ -29,12 +29,11 @@
       animation:spin 1s linear infinite;
       margin-bottom:15px;
     }
-    @keyframes spin {to{transform:rotate(360deg)}}
+    @keyframes spin{to{transform:rotate(360deg)}}
 
     /* Navbar */
-    nav {
-      position:fixed;
-      top:0;left:0;width:100%;
+    nav{
+      position:fixed;top:0;left:0;width:100%;
       background:rgba(0,0,0,0.6);
       backdrop-filter:blur(10px);
       display:flex;justify-content:space-between;align-items:center;
@@ -42,119 +41,98 @@
       z-index:1000;
       border-bottom:1px solid rgba(0,255,198,0.3);
     }
-    nav .logo {
+    nav .logo{
       font-family:'Orbitron',sans-serif;
       color:#00ffc6;
       font-size:1.3rem;
       text-shadow:0 0 10px #00ffc6;
     }
-    nav ul {display:flex;gap:20px;list-style:none;}
-    nav ul li a {
-      text-decoration:none;
-      color:white;
-      font-weight:600;
-      transition:.3s;
+    nav ul{display:flex;gap:20px;list-style:none;}
+    nav ul li a{
+      text-decoration:none;color:white;font-weight:600;transition:.3s;
     }
-    nav ul li a:hover {
-      color:#00ffc6;
-      text-shadow:0 0 10px #00ffc6;
+    nav ul li a:hover{
+      color:#00ffc6;text-shadow:0 0 10px #00ffc6;
     }
 
     /* Hero */
-    header {
+    header{
       height:100vh;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      background:transparent;
-      position:relative;
-      padding:0 20px;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;
+      text-align:center;position:relative;padding:0 20px;
     }
-    header h1 {
+    header h1{
       font-family:'Orbitron',sans-serif;
-      font-size:2.5rem;
-      color:#00ffc6;
+      font-size:2.5rem;color:#00ffc6;
       text-shadow:0 0 25px #00ffc6;
       animation:glowText 2s infinite alternate;
     }
-    @keyframes glowText {
+    @keyframes glowText{
       from{text-shadow:0 0 10px #00ffc6;}
       to{text-shadow:0 0 30px #00bfa5;}
     }
-    header p {color:#ccc;margin-top:10px;}
+    header p{color:#ccc;margin-top:10px;}
 
-    .container {
+    .container{
       max-width:1100px;
       margin:100px auto;
       padding:20px;
     }
 
     /* Paket Hosting */
-    .plans {
+    .plans{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
       gap:25px;
     }
-    .plan {
+    .plan{
       background:rgba(255,255,255,0.05);
       border:1px solid rgba(0,255,198,0.3);
       border-radius:15px;
-      padding:25px;
-      text-align:center;
+      padding:25px;text-align:center;
       backdrop-filter:blur(10px);
       transition:all .4s ease;
       opacity:0;transform:translateY(50px);
     }
-    .plan.visible {opacity:1;transform:translateY(0);}
-    .plan:hover {transform:translateY(-10px) scale(1.03);box-shadow:0 0 25px rgba(0,255,198,0.4);}
-    .plan h2 {color:#00ffc6;margin-bottom:15px;}
-    .plan ul {list-style:none;text-align:left;margin-bottom:20px;}
-    .plan li {margin:6px 0;padding-left:10px;border-left:2px solid #00ffc6;}
-    .btn {
+    .plan.visible{opacity:1;transform:translateY(0);}
+    .plan:hover{
+      transform:translateY(-10px) scale(1.03);
+      box-shadow:0 0 25px rgba(0,255,198,0.4);
+    }
+    .plan h2{color:#00ffc6;margin-bottom:15px;}
+    .plan ul{list-style:none;text-align:left;margin-bottom:20px;}
+    .plan li{margin:6px 0;padding-left:10px;border-left:2px solid #00ffc6;}
+    .btn{
       background:#00ffc6;color:#000;font-weight:700;
       padding:10px 22px;border-radius:30px;text-decoration:none;
       transition:0.3s;box-shadow:0 0 15px #00ffc6;
     }
-    .btn:hover {background:#00bfa5;color:white;box-shadow:0 0 25px #00ffc6;}
-
-    section {text-align:center;margin-top:80px;opacity:0;transform:translateY(40px);transition:all 0.6s ease;}
-    section.visible {opacity:1;transform:translateY(0);}
-    section h3 {color:#00ffc6;margin-bottom:15px;font-size:1.6rem;text-shadow:0 0 10px #00ffc6;}
-    section ul {list-style:none;display:inline-block;text-align:left;line-height:1.8;}
-
-    /* Testimoni */
-    .testimoni {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:25px;
-      margin-top:30px;
+    .btn:hover{
+      background:#00bfa5;color:white;box-shadow:0 0 25px #00ffc6;
     }
-    .card {
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(0,255,198,0.3);
-      border-radius:15px;
-      padding:20px;
-      text-align:left;
-      transition:all 0.4s ease;
-      transform-style:preserve-3d;
-    }
-    .card:hover {
-      transform:rotateY(5deg) scale(1.05);
-      box-shadow:0 0 20px rgba(0,255,198,0.4);
-    }
-    .card h4 {color:#00ffc6;margin-bottom:8px;}
-    .card p {color:#ccc;font-size:0.9rem;}
 
-    footer {
+    section{
+      text-align:center;margin-top:80px;
+      opacity:0;transform:translateY(40px);
+      transition:all 0.6s ease;
+    }
+    section.visible{opacity:1;transform:translateY(0);}
+    section h3{
+      color:#00ffc6;margin-bottom:15px;font-size:1.6rem;
+      text-shadow:0 0 10px #00ffc6;
+    }
+    section ul{
+      list-style:none;display:inline-block;text-align:left;line-height:1.8;
+    }
+
+    footer{
       text-align:center;padding:20px;margin-top:80px;
       font-size:0.9rem;background:rgba(0,0,0,0.5);
       border-top:2px solid #00ffc6;
     }
 
     /* Floating Chat */
-    .whatsapp-float {
+    .whatsapp-float{
       position:fixed;bottom:25px;right:25px;
       background:#00ffc6;color:#000;
       border-radius:50%;width:60px;height:60px;
@@ -163,15 +141,14 @@
       box-shadow:0 0 20px #00ffc6;
       transition:.3s;z-index:999;
     }
-    .whatsapp-float:hover {
+    .whatsapp-float:hover{
       transform:scale(1.1);
-      background:#00bfa5;
-      color:white;
+      background:#00bfa5;color:white;
       box-shadow:0 0 30px #00ffc6;
     }
 
     /* Background Partikel */
-    #particles-js {
+    #particles-js{
       position:fixed;top:0;left:0;width:100%;height:100%;
       z-index:-1;background:#05080b;
     }
@@ -193,8 +170,6 @@
       <li><a href="#home">Home</a></li>
       <li><a href="#paket">Paket</a></li>
       <li><a href="#benefit">Benefit</a></li>
-      <li><a href="#jasa">Jasa</a></li>
-      <li><a href="#testimoni">Testimoni</a></li>
       <li><a href="#kontak">Kontak</a></li>
     </ul>
   </nav>
@@ -206,7 +181,6 @@
 
   <div class="container" id="paket">
     <div class="plans">
-
       <div class="plan">
         <h2>💰 HARGA: 5K</h2>
         <ul>
@@ -250,7 +224,6 @@
         </ul>
         <a href="https://wa.me/6285191923519?text=Saya%20mau%20paket%2020K" class="btn" target="_blank">Pesan Sekarang</a>
       </div>
-
     </div>
 
     <section id="benefit">
@@ -263,34 +236,6 @@
         <li>ANTI DDOS PROTECTION</li>
         <li>99.9% UPTIME</li>
       </ul>
-    </section>
-
-    <section id="jasa">
-      <h3>🛠️ MENERIMA JASA</h3>
-      <ul>
-        <li>INSTALL PANEL PTERODACTYL</li>
-        <li>INSTALL DATABASE DAN PMA</li>
-        <li>INSTALL SERVER SAMP</li>
-        <li>KONFIG VPS / DEDICATED</li>
-      </ul>
-    </section>
-
-    <section id="testimoni">
-      <h3>⭐ TESTIMONI PELANGGAN</h3>
-      <div class="testimoni">
-        <div class="card">
-          <h4>🔥 Server RP Mantap!</h4>
-          <p>Hosting stabil banget, ping rendah dan support cepat. Terbaik pokoknya!<br><b>- Fahri, Owner Never RP</b></p>
-        </div>
-        <div class="card">
-          <h4>⚡ Performa Ngebut!</h4>
-          <p>Pakai paket 10K tapi performanya udah kayak VPS mahal. Rekomended!<br><b>- Haikal, Developer</b></p>
-        </div>
-        <div class="card">
-          <h4>💬 Support Fast Respon!</h4>
-          <p>Admin Ditzz Network super ramah dan fast respon. Bantu install panel juga.<br><b>- Dimas, Player SA:MP</b></p>
-        </div>
-      </div>
     </section>
 
     <section id="kontak">
